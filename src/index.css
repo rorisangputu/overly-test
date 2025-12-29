@@ -14,6 +14,9 @@ body {
 .font-mono{
   font-family:monospace
 }
+.font-roboto{
+  font-family: "Roboto", sans-serif;
+}
 
 @utility flex-center {
   @apply flex justify-center items-center;

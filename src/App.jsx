@@ -7,8 +7,10 @@ function App() {
 
   return (
     <>
-      {loading && <Loader onComplete={() => setLoading(false)} />}
-      {!loading && <Hero />}
+      {/* {loading && <Loader onComplete={() => setLoading(false)} />}
+      {!loading && <Hero />} */}
+
+      <Hero />
     </>
   )
 }
