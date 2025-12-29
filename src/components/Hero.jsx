@@ -1,13 +1,30 @@
 import React from 'react'
 import MouseFollowTilt from './MouseFollowTilt'
 import { motion } from 'motion/react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 
 const Hero = () => {
+    useGSAP(() => {
+        gsap.fromTo(
+            '.nav-links',
+            { opacity: 0, y: 10 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+                stagger: 0.9,
+                delay: 1,
+            }
+        )
+    }, [])
+
     return (
         <div className='relative w-full text-neutral-800 h-screen font-mono font-semibold text-lg'>
-            <nav className='w-[90%] mx-auto h-full py-10 flex flex-col justify-between'>
-                <div className='flex justify-between'>
+            <nav className='nav-links w-[90%] mx-auto h-full py-10 flex flex-col justify-between'>
+                <div id='links' className='flex justify-between'>
                     <motion.a
                         href="/"
                         className="relative overflow-hidden border-b px-3 py-2"
@@ -52,7 +69,7 @@ const Hero = () => {
                         </motion.span>
                     </motion.a>
                 </div>
-                <div className='flex justify-between'>
+                <div id='links' className='flex justify-between'>
                     <motion.a
                         href="#about"
                         className="relative overflow-hidden border-b px-3 py-2"
@@ -75,7 +92,7 @@ const Hero = () => {
                         </motion.span>
                     </motion.a>
                     <motion.a
-                        href=""
+                        href="#contact"
                         className="relative overflow-hidden border-b px-3 py-2"
                         initial="rest"
                         whileHover="hover"
