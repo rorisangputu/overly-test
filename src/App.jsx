@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Hero from './components/Hero'
 import Loader from './components/Loader'
+import Work from './components/Work';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -11,6 +12,7 @@ function App() {
       {!loading && <Hero />} */}
 
       <Hero />
+      <Work />
     </>
   )
 }
