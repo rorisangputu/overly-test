@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MouseFollowTilt from './MouseFollowTilt'
 import { motion } from 'motion/react'
 import { useGSAP } from '@gsap/react'
@@ -6,6 +6,21 @@ import gsap from 'gsap'
 
 
 const Hero = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 500) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     useGSAP(() => {
         gsap.fromTo(
             '.nav-links',
@@ -22,104 +37,77 @@ const Hero = () => {
     }, [])
 
     return (
-        <div className='relative w-full text-neutral-800 h-screen font-mono font-semibold text-lg'>
-            <nav className='nav-links w-[90%] mx-auto h-full py-10 flex flex-col justify-between'>
-                <div id='links' className='flex justify-between'>
-                    <motion.a
-                        href="/"
-                        className="relative overflow-hidden border-b px-3 py-2"
-                        initial="rest"
-                        whileHover="hover"
-                        animate="rest"
-                    >
-                        {/* Sliding black background */}
-                        <motion.span
-                            variants={bgVariant}
-                            className="absolute inset-0 bg-black"
-                        />
-
-                        {/* Text */}
-                        <motion.span
-                            variants={textVariant}
-                            className="relative z-10"
-                        >
-                            Home
-                        </motion.span>
-                    </motion.a>
-
-                    <motion.a
-                        href="#work"
-                        className="relative overflow-hidden border-b px-3 py-2"
-                        initial="rest"
-                        whileHover="hover"
-                        animate="rest"
-                    >
-                        {/* Sliding black background */}
-                        <motion.span
-                            variants={bgVariant}
-                            className="absolute inset-0 bg-black"
-                        />
-
-                        {/* Text */}
-                        <motion.span
-                            variants={textVariant}
-                            className="relative z-10"
-                        >
-                            Work
-                        </motion.span>
-                    </motion.a>
-                </div>
-                <div id='links' className='flex justify-between'>
-                    <motion.a
-                        href="#about"
-                        className="relative overflow-hidden border-b px-3 py-2"
-                        initial="rest"
-                        whileHover="hover"
-                        animate="rest"
-                    >
-                        {/* Sliding black background */}
-                        <motion.span
-                            variants={bgVariant}
-                            className="absolute inset-0 bg-black"
-                        />
-
-                        {/* Text */}
-                        <motion.span
-                            variants={textVariant}
-                            className="relative z-10"
-                        >
-                            About
-                        </motion.span>
-                    </motion.a>
-                    <motion.a
-                        href="#contact"
-                        className="relative overflow-hidden border-b px-3 py-2"
-                        initial="rest"
-                        whileHover="hover"
-                        animate="rest"
-                    >
-                        {/* Sliding black background */}
-                        <motion.span
-                            variants={bgVariant}
-                            className="absolute inset-0 bg-black"
-                        />
-
-                        {/* Text */}
-                        <motion.span
-                            variants={textVariant}
-                            className="relative z-10"
-                        >
-                            Contact
-                        </motion.span>
-                    </motion.a>
-
+        <>
+            {/* Sticky Navbar - appears on scroll */}
+            <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 font-mono font-semibold text-lg ${isScrolled ? 'translate-y-0 opacity-100 ' : '-translate-y-full opacity-0'
+                }`}>
+                <div className='w-[90%] mx-auto py-4 flex items-center justify-center'>
+                    {/* Logo */}
+                    <a href='#nav-container' className='flex items-center'>
+                        <img id='logo' src="/overly-logo.png" alt="Logo" className="w-12 h-12" />
+                    </a>
                 </div>
             </nav>
-            {/* Center the logo perfectly */}
-            <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
-                <MouseFollowTilt />
+
+            {/* Original Hero Section */}
+            <div id='nav-container' className='relative w-full text-neutral-800 h-screen font-mono font-semibold text-lg'>
+                <nav className='nav-links w-[90%] mx-auto h-full py-10 flex flex-col justify-between'>
+                    <div id='links' className='flex justify-between'>
+                        <motion.a
+                            href="/"
+                            className="relative overflow-hidden border-b px-3 py-2"
+                            initial="rest"
+                            whileHover="hover"
+                            animate="rest"
+                        >
+                            <motion.span variants={bgVariant} className="absolute inset-0 bg-black" />
+                            <motion.span variants={textVariant} className="relative z-10">Home</motion.span>
+                        </motion.a>
+
+                        <motion.a
+                            href="#work"
+                            className="relative overflow-hidden border-b px-3 py-2"
+                            initial="rest"
+                            whileHover="hover"
+                            animate="rest"
+                        >
+                            <motion.span variants={bgVariant} className="absolute inset-0 bg-black" />
+                            <motion.span variants={textVariant} className="relative z-10">Work</motion.span>
+                        </motion.a>
+                    </div>
+                    <div id='links' className='flex justify-between'>
+                        <motion.a
+                            href="#about"
+                            className="relative overflow-hidden border-b px-3 py-2"
+                            initial="rest"
+                            whileHover="hover"
+                            animate="rest"
+                        >
+                            <motion.span variants={bgVariant} className="absolute inset-0 bg-black" />
+                            <motion.span variants={textVariant} className="relative z-10">About</motion.span>
+                        </motion.a>
+
+                        <motion.a
+                            href="#contact"
+                            className="relative overflow-hidden border-b px-3 py-2"
+                            initial="rest"
+                            whileHover="hover"
+                            animate="rest"
+                        >
+                            <motion.span variants={bgVariant} className="absolute inset-0 bg-black" />
+                            <motion.span variants={textVariant} className="relative z-10">Contact</motion.span>
+                        </motion.a>
+                    </div>
+                </nav>
+
+                {/* Center the logo perfectly */}
+                <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
+                    <MouseFollowTilt />
+                </div>
             </div>
-        </div>
+
+
+        </>
     )
 }
 
@@ -127,7 +115,7 @@ export default Hero
 
 const bgVariant = {
     rest: {
-        y: "100%", // start hidden below
+        y: "100%",
     },
     hover: {
         y: "0%",
@@ -140,7 +128,7 @@ const bgVariant = {
 
 const textVariant = {
     rest: {
-        color: "#262626", // neutral-800
+        color: "#262626",
     },
     hover: {
         color: "#ffffff",
@@ -150,4 +138,3 @@ const textVariant = {
         },
     },
 }
-
