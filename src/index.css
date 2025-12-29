@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+html,
+body {
+  width: 100%;
+  background-color: white;
+  color: white;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility col-center {
+  @apply flex flex-col justify-center items-center;
+}
