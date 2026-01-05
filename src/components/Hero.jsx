@@ -6,20 +6,7 @@ import gsap from 'gsap'
 
 
 const Hero = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 500) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+   
 
     useGSAP(() => {
         gsap.fromTo(
@@ -38,19 +25,10 @@ const Hero = () => {
 
     return (
         <>
-            {/* Sticky Navbar - appears on scroll */}
-            <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 font-mono font-semibold text-lg ${isScrolled ? 'translate-y-0 opacity-100 ' : '-translate-y-full opacity-0'
-                }`}>
-                <div className='w-[90%] mx-auto py-4 flex items-center justify-center'>
-                    {/* Logo */}
-                    <a href='#nav-container' className='flex items-center'>
-                        <img id='logo' src="/overly-logo.png" alt="Logo" className="w-12 h-12" />
-                    </a>
-                </div>
-            </nav>
+           
 
             {/* Original Hero Section */}
-            <div id='nav-container' className='relative w-full text-neutral-800 h-screen font-mono font-semibold text-lg'>
+            <div id='nav-container' className='relative w-full text-neutral-800 h-screen font-mono font-light text-lg'>
                 <nav className='nav-links w-[90%] mx-auto h-full py-10 flex flex-col justify-between'>
                     <div id='links' className='flex justify-between'>
                         <motion.a
