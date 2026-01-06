@@ -7,7 +7,7 @@ const Services = () => {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-75%"]);
 
     return (
-        <section
+        <section id='services'
             ref={targetRef}
             className="relative h-[300vh] w-full bg-neutral-950"
         >

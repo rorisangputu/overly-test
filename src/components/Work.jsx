@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { GoArrowDownRight } from 'react-icons/go'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,11 +47,17 @@ const Work = () => {
     })
 
     return (
-        <div className='min-h-screen bg-neutral-950 w-full text-white page'>
+        <div id='work' className='min-h-screen bg-neutral-950 w-full text-white page'>
             <div className="w-[90%] mx-auto py-16 font-mono">
-                <div id='header' className='flex items-center justify-between mt-2'>
-                    <p className='text-xs border-b border-dotted py-3 w-1/2'>A collection of our most recent works. <br />Clients and mock-ups.</p>
-                    <h1 className='text-5xl text-end leading-10 w-1/2'>Work</h1>
+                <div className='flex justify-between'>
+                    <div id='header' className='flex flex-col justify-between mt-2'>
+                        <h1 className='text-5xl leading-10'>Work</h1>
+                        <p className='text-xs border-b border-dotted py-3 max-w-xs'>A collection of our most recent works. <br />Clients and mock-ups.</p>
+                    </div>
+                    <a href='#services' className='flex flex-col justify-end items-end'>
+                        <p className='text-xl'>Services</p>
+                        <GoArrowDownRight className='h-7 w-7' />
+                    </a>
                 </div>
                 <div className='py-5 projects-container'>
                     {projects.map((proj, index) => (
