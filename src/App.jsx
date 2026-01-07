@@ -6,16 +6,17 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Services from './components/Services';
 import Nav from './components/Nav';
+import { useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger)
 
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false)
   return (
     <>
-      <Nav />
-      <div className='container h-screen'>
-        <h1>Hello</h1>
-      </div>
+      <Nav isScrolled={isScrolled} />
+      <Hero isScrolled={setIsScrolled} />
+
     </>
   )
 }

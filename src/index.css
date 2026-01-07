@@ -4,14 +4,14 @@
 html,
 body {
   width: 100%;
-  background-color: white;
+  background-color: #171717;
   color: black;
   scroll-behavior: smooth;
   /* overflow-x: hidden; */
   font-family: "Instrumental Serif", sans-serif;
 }
 @utility page-container{
-  @apply w-full py-10
+  @apply w-full 
 }
 
 @utility content-container{
@@ -21,8 +21,12 @@ body {
 .font-mono{
   font-family:monospace
 }
-.font-roboto{
-  font-family: "Roboto", sans-serif;
+.font-Instrumental{
+  font-family: "Instrumental Serif", "sans-serif"
+}
+
+.font-inter{
+  font-family: "Inter",
 }
 
 @utility flex-center {
